@@ -71,23 +71,23 @@ flowchart TD
 
 ```text
 AutoAid-AI/
-â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ app/
-â”‚   â”‚   â”œâ”€â”€ api/diagnose/      # Serverless Gemini diagnostic route handler
-â”‚   â”‚   â”œâ”€â”€ assistance/        # Roadside assistance & recovery locator
-â”‚   â”‚   â”œâ”€â”€ diagnose/          # Interactive AI symptom diagnostic UI
-â”‚   â”‚   â”œâ”€â”€ emergency/         # Emergency SOS protocol & safety checklist
-â”‚   â”‚   â”œâ”€â”€ faults/            # OBD-II / DTC fault database & detail views
-â”‚   â”‚   â”œâ”€â”€ search/            # Global fault & vehicle search
-â”‚   â”‚   â”œâ”€â”€ vehicles/          # Supported brands & model guides
-â”‚   â”‚   â””â”€â”€ warning-lights/    # Instrument cluster warning light catalog
-â”‚   â”œâ”€â”€ components/            # Layout & reusable UI components
-â”‚   â”œâ”€â”€ data/                  # Vehicle, brand, fault & warning-light datasets
-â”‚   â”œâ”€â”€ lib/                   # Local diagnostic engine & utility helpers
-â”‚   â””â”€â”€ types/                 # Shared TypeScript interfaces
-â”œâ”€â”€ scripts/                   # Data maintenance utilities
-â”œâ”€â”€ .env.example
-â””â”€â”€ package.json
+├── src/
+│   ├── app/
+│   │   ├── api/diagnose/      # Serverless Gemini diagnostic route handler
+│   │   ├── assistance/        # Roadside assistance & recovery locator
+│   │   ├── diagnose/          # Interactive AI symptom diagnostic UI
+│   │   ├── emergency/         # Emergency SOS protocol & safety checklist
+│   │   ├── faults/            # OBD-II / DTC fault database & detail views
+│   │   ├── search/            # Global fault & vehicle search
+│   │   ├── vehicles/          # Supported brands & model guides
+│   │   └── warning-lights/    # Instrument cluster warning light catalog
+│   ├── components/            # Layout & reusable UI components
+│   ├── data/                  # Vehicle, brand, fault & warning-light datasets
+│   ├── lib/                   # Local diagnostic engine & utility helpers
+│   └── types/                 # Shared TypeScript interfaces
+├── scripts/                   # Data maintenance utilities
+├── .env.example
+└── package.json
 ```
 
 </details>
@@ -130,7 +130,7 @@ npm run build   # Create production build
 
 ## License
 
-Released under the [MIT License](LICENSE) Â© 2026 [Akil Shehan](https://github.com/Sh3hann).
+Released under the [MIT License](LICENSE) © 2026 [Akil Shehan](https://github.com/Sh3hann).
 
 <div align="center">
 
