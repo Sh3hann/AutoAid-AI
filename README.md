@@ -1,130 +1,141 @@
 <div align="center">
 
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=11,19,26&height=200&section=header&text=🚗%20AutoAid%20AI&fontSize=46&fontAlignY=36&desc=Intelligent%20Vehicle%20Diagnostics%20%7C%20Gemini%20AI%20%7C%20Roadside%20Assistance&descAlignY=58&descSize=16&fontColor=ffffff" width="100%" alt="AutoAid AI Header" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,50:1e293b,100:d97706&height=190&section=header&text=AutoAid%20AI&fontSize=46&fontAlignY=38&desc=Intelligent%20Vehicle%20Diagnostics%20%7C%20OBD-II%20Decoder%20%7C%20Roadside%20Triage&descAlignY=62&descSize=16&fontColor=ffffff" width="100%" alt="AutoAid AI Header" />
 
   <p align="center">
-    <b>Empowering drivers with real-time AI vehicle diagnostics, instant OBD-II fault code decoding, visual warning light scanning, and emergency roadside dispatch triage.</b>
+    <b>AI-powered vehicle diagnostics platform featuring symptom-based root-cause triage, instant OBD-II fault code decoding, dashboard warning light reference, and emergency roadside checklists.</b>
   </p>
 
   <p align="center">
-    <a href="https://github.com/Sh3hann/AutoAid-AI">
-      <img src="https://img.shields.io/badge/💻_Source_Code-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="Source Code" />
-    </a>
-  </p>
-
-  <p align="center">
-    <img src="https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js&logoColor=white" alt="Next.js" />
-    <img src="https://img.shields.io/badge/React-19-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React" />
-    <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
-    <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-    <img src="https://img.shields.io/badge/Google_Gemini-AI-4285F4?style=flat-square&logo=google-gemini&logoColor=white" alt="Gemini" />
-    <img src="https://img.shields.io/badge/License-MIT-22c55e?style=flat-square" alt="License" />
+    <img src="https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js 16" />
+    <img src="https://img.shields.io/badge/React-19-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React 19" />
+    <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript 5" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" />
+    <img src="https://img.shields.io/badge/Google_Gemini-AI-4285F4?style=flat-square&logo=googlegemini&logoColor=white" alt="Google Gemini AI" />
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22c55e?style=flat-square" alt="MIT License" /></a>
   </p>
 
 </div>
 
 ---
 
-## ⚡ Key Capabilities
+## Core Capabilities
 
-<div align="center">
-
-| Capability | Overview | Practical Impact |
-|:---|:---|:---|
-| 🤖 **AI Symptom Reasoner** | Natural language triage driven by **Google Gemini AI**. Translates sensory driver feedback (knocks, smoke, vibrations) into diagnostic hypotheses. | Solves uncertainty before costly dealership visits. |
-| 🔍 **DTC & OBD-II Decoder** | Instant database lookup for all standard Powertrain (P), Body (B), Chassis (C), and Network (U) error codes. | Translates cryptic fault codes into clear root causes and repair guides. |
-| 🚨 **Emergency SOS & Roadside Triage** | Automated safety checklist, incident GPS coordinates, breakdown protocols, and direct recovery service coordination. | Rapid, calm response in critical highway and breakdown scenarios. |
-| ⚠️ **Cluster Warning Light Scanner** | Visual catalog of dashboard symbols with severity indicators (Critical Stop, Maintenance, Advisory). | Instant identification of unknown dashboard icons with actionable advice. |
-| 🚗 **Virtual Vehicle Garage** | Profile manager for multiple personal vehicles tracking make, model, year, VIN specs, and past diagnostic evaluations. | Centralized maintenance and diagnostics history at your fingertips. |
-
-</div>
+| Module | Overview | Practical Impact |
+| :--- | :--- | :--- |
+| **AI Symptom Reasoner** | Conversational triage via Google Gemini (`GEMINI_API_KEY`) with automatic fallback to a deterministic local engine (`src/lib/ai-engine.ts`). | Translates driver symptoms into ranked root causes, drivability checks, and repair cost estimates. |
+| **DTC & OBD-II Decoder** | Searchable fault database covering standard Powertrain (`P`), Body (`B`), Chassis (`C`), and Network (`U`) diagnostic codes. | Explains fault triggers, severity levels, and inspection steps clearly. |
+| **Emergency SOS & Roadside Triage** | Guided safety checklist, breakdown protocols, and recovery assistance locator. | Provides clear immediate steps during roadside emergencies. |
+| **Warning Light Reference** | Interactive catalog of dashboard cluster indicators grouped by urgency (Critical Stop, Service Soon, Advisory). | Identifies unfamiliar warning icons and recommended actions quickly. |
+| **Vehicle & Brand Explorer** | Browse supported vehicle makes, common model faults, and tailored maintenance guides. | Organizes vehicle-specific diagnostic data in one place. |
 
 ---
 
-## 🏗️ Diagnostic Pipeline Architecture
+## Diagnostic Pipeline Architecture
 
-`mermaid
+```mermaid
 flowchart TD
-    subgraph Driver ["Driver Input Layer"]
-        A["Driver Describes Symptoms<br/>(Noise, Smell, Handling, Leak)"]
-        B["OBD-II Fault Code Input<br/>(e.g., P0300, P0420)"]
-        C["Cluster Warning Light Selection"]
+    subgraph Driver["Driver Input Layer"]
+        A["Symptom Description\n(Noise, Vibration, Smoke, Leaks)"]
+        B["OBD-II Fault Code Lookup\n(e.g., P0300, P0420)"]
+        C["Dashboard Warning Light Selection"]
     end
 
-    subgraph Intelligence ["Gemini AI Intelligence Layer"]
-        D["Context Builder<br/>(Make, Model, Year, Mileage)"]
-        E["Gemini AI Diagnostic Engine<br/>(@google/generative-ai)"]
-        F["Severity & Triage Calculator"]
+    subgraph Intelligence["Diagnostics & Reasoning Layer"]
+        D["Vehicle Context Builder\n(Make, Year, Mileage)"]
+        E["POST /api/diagnose\n(Google Gemini API)"]
+        F["Local Diagnostic Engine\n(src/lib/ai-engine.ts Fallback)"]
     end
 
-    subgraph Output ["Resolution & Guidance"]
-        G["Probable Root Causes & Likelihood %"]
-        H["Actionable DIY Steps vs. Mechanic Urgency"]
-        I["Emergency SOS & Roadside Dispatch Protocol"]
+    subgraph Output["Actionable Output"]
+        G["Probable Root Causes & Confidence %"]
+        H["DIY Inspection vs. Mechanic Urgency"]
+        I["Drivability Verdict & Cost Range"]
     end
 
     A --> D
     B --> D
     C --> D
     D --> E
-    E --> F
+    D --> F
+    E --> G
     F --> G
+    E --> H
     F --> H
+    E --> I
     F --> I
-`
+```
 
 <details>
-<summary><b>📂 View Modular Codebase Architecture</b></summary>
+<summary><b>Project Structure</b></summary>
 
-`
+```text
 AutoAid-AI/
-├── src/app/
-│   ├── diagnose/            # Interactive AI symptom diagnostic engine
-│   ├── faults/              # OBD-II & DTC fault code database explorer
-│   ├── emergency/           # Immediate emergency SOS protocol & safety checklist
-│   ├── assistance/          # Roadside recovery service locator & dispatch
-│   ├── vehicles/            # Virtual garage vehicle manager
-│   ├── warning-lights/      # Visual instrument cluster light catalog
-│   └── api/                 # Next.js serverless route handlers
-├── src/components/          # Modular UI components & animated cockpit controls
-└── src/lib/                 # Gemini API client & automotive diagnostic helpers
-`
+├── src/
+│   ├── app/
+│   │   ├── api/diagnose/      # Serverless Gemini diagnostic route handler
+│   │   ├── assistance/        # Roadside assistance & recovery locator
+│   │   ├── diagnose/          # Interactive AI symptom diagnostic UI
+│   │   ├── emergency/         # Emergency SOS protocol & safety checklist
+│   │   ├── faults/            # OBD-II / DTC fault database & detail views
+│   │   ├── search/            # Global fault & vehicle search
+│   │   ├── vehicles/          # Supported brands & model guides
+│   │   └── warning-lights/    # Instrument cluster warning light catalog
+│   ├── components/            # Layout & reusable UI components
+│   ├── data/                  # Vehicle, brand, fault & warning-light datasets
+│   ├── lib/                   # Local diagnostic engine & utility helpers
+│   └── types/                 # Shared TypeScript interfaces
+├── scripts/                   # Data maintenance utilities
+├── .env.example
+└── package.json
+```
 
 </details>
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
+
+### Prerequisites
+- **Node.js 20+** and **npm**
 
 ### 1. Clone & Install
-`ash
+```bash
 git clone https://github.com/Sh3hann/AutoAid-AI.git
 cd AutoAid-AI
 npm install
-`
+```
 
-### 2. Configure Environment
-Create a .env.local file in the project root:
-`env
-NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
-`
+### 2. Configure Environment (Optional)
+Copy `.env.example` to `.env.local` and add a Google Gemini API key from [Google AI Studio](https://aistudio.google.com/):
 
-### 3. Launch Development Server
-`ash
-npm run dev
-`
-Open **http://localhost:3000** in your browser.
+```bash
+cp .env.example .env.local
+```
+
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+> **Offline / Keyless Mode:** If `GEMINI_API_KEY` is omitted, AutoAid AI runs using its built-in local symptom-correlation engine (`src/lib/ai-engine.ts`).
+
+### 3. Run & Build
+```bash
+npm run dev     # Start local dev server at http://localhost:3000
+npm run lint    # Run ESLint checks
+npm run build   # Create production build
+```
 
 ---
 
+## License
+
+Released under the [MIT License](LICENSE) © 2026 [Akil Shehan](https://github.com/Sh3hann).
+
 <div align="center">
 
-### 👨‍💻 Developed with Precision by [Akil Shehan](https://github.com/Sh3hann)
-
-[![Website](https://img.shields.io/badge/Portfolio-itzshehan.xyz-f59e0b?style=flat-square&logo=google-chrome&logoColor=white)](https://itzshehan.xyz/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Akil_Shehan-0077b5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/akil-shehan-b808b340b)
-[![GitHub](https://img.shields.io/badge/GitHub-@Sh3hann-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Sh3hann)
-
-<sub>© 2026 AutoAid AI. Released under the MIT License.</sub>
+<a href="https://itzshehan.xyz/"><img src="https://img.shields.io/badge/Portfolio-itzshehan.xyz-f59e0b?style=flat-square&logo=googlechrome&logoColor=white" alt="Portfolio" /></a>
+<a href="https://www.linkedin.com/in/akil-shehan-b808b340b"><img src="https://img.shields.io/badge/LinkedIn-Akil_Shehan-0077b5?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+<a href="https://github.com/Sh3hann"><img src="https://img.shields.io/badge/GitHub-@Sh3hann-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" /></a>
 
 </div>
